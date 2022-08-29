@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastracter\Infrastracter.csproj" />
+    <ProjectReference Include="..\Infrastracter\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,34 +2,46 @@
 
 using Domain.Entities;
 using Domain.Interfaces;
+using Infrastracter.Data;
 
 namespace Infrastracter.Repositories
 {
     public class NoteRepository : INoteRepository
     {
-        public Note AddNote(Note note)
+        private readonly MyNotesContext _context;
+        public NoteRepository(MyNotesContext contex)
         {
-            throw new NotImplementedException();
+            _context = contex;
         }
-
-        public void Delete(Note note)
+ public IQueryable<Note> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<Note> GetAll()
-        {
-            throw new NotImplementedException();
+            return _context.Notes;
         }
 
         public Note GetById(int id)
         {
-            throw new NotImplementedException();
+        return _context.Notes.SingleOrDefault(x => x.Id == id);
         }
 
+        public Note AddNote(Note note)
+        {
+            _context.Notes.Add(note);
+            _context.SaveChanges();
+            return note;
+        }
         public void Update(Note note)
         {
-            throw new NotImplementedException();
+            _context.Notes.Update(note);
+            _context.SaveChanges();
         }
+
+        public void Delete(Note note)
+        {
+            _context.Remove(note);
+            _context.SaveChanges();
+        }
+
+       
+
     }
 }
