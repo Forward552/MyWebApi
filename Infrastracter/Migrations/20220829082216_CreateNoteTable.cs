@@ -30,3 +30,6 @@ namespace Infrastructure.Migrations
         }
     }
 }
+
+///Add-Migration CreateNoteTable
+///Update-Database
